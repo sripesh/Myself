@@ -7,8 +7,11 @@ def b_click(num):
     text.delete(0,END)
     text.insert(0, str(cnum)+str(num))
 def b_clear():
+    global t
+    global op
     text.delete(0,END)
     t=0
+    op=""
 def b_add():
     global t
     global op
