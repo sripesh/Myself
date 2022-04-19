@@ -96,8 +96,40 @@ def execute():
 
             b0=Button(root,text="0",padx=30,pady=20,command=lambda:b_click(0)).grid(row=5,column=0,columnspan=1)
             clear=Button(root,text="Clear",padx=56,pady=20,command=b_clear).grid(row=5,column=1,columnspan=2)
-
     elif choice==3:
+        msg=messagebox.askyesno("Open","Do you want to play Guessing Game?")
+        if(msg==1):
+            def Guess(n):
+                az=int(num.get())
+                if az==n:
+                    label.destroy()
+                    num.destroy()
+                    button.destroy()
+                    label1.config(text="YOU\nWON")
+                elif az>n:
+                    label1.config(text="Too Large")
+                elif az<n:
+                    label1.config(text="Too Small")
+                else:
+                    label1.config(text="Try Again")
+            import random
+            root=Toplevel(steam)
+            root.title("Guessing Game")
+            root.geometry("220x140")
+            label=Label(root,text="Guess a number between 1-100: ")
+            label.pack()
+            num=Entry(root,width=20,borderwidth=6)
+            num.pack()
+            label1=Label(root,text="-START-")
+            n=100
+            n=int(n*random.random())+1
+            az=""
+            button=Button(root,text="Guess",command=lambda:Guess(n))
+            button.pack()
+            label1.pack()
+            but=Button(root,text="Exit",command=lambda:root.quit())
+            but.pack()
+    elif choice==4:
         steam.quit()
 
 var = IntVar()
@@ -109,8 +141,10 @@ R1 = Radiobutton(frame, text="Greeting", variable=var, value=1)
 R1.pack(anchor=W)
 R2 = Radiobutton(frame, text="Calculator", variable=var, value=2)
 R2.pack(anchor=W)
-R3 = Radiobutton(frame, text="Exit", variable=var, value=3)
+R3 = Radiobutton(frame, text="Guessing Game", variable=var, value=3)
 R3.pack(anchor=W)
+R4 = Radiobutton(frame, text="Exit", variable=var, value=4)
+R4.pack(anchor=W)
 
 b=Button(steam,text="Execute",command=lambda: execute())
 b.pack(pady=30)
