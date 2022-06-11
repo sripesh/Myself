@@ -1,4 +1,4 @@
-package Java;
+package Myself.Java;
 import java.util.*;
 /**
  * defaultthrowcatch
